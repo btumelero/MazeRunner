@@ -1,4 +1,6 @@
-import mazerunner.MazeRunner;
+package maze;
+
+import maze.mazerunner.MazeRunner;
 
 public class Maze {
 

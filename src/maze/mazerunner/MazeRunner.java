@@ -1,4 +1,4 @@
-package mazerunner;
+package maze.mazerunner;
 
 import java.util.Stack;
 
@@ -8,7 +8,8 @@ public class MazeRunner {
   private final PathSet paths;
   private final Stack<Position> wayOut;
   private final Position origin;
-
+  private String path;
+  
   // #region Exploring
 
   public void explore() {
@@ -74,17 +75,16 @@ public class MazeRunner {
   
   public String explain() {
     System.out.print("\nExplaining");
-    String path = "\n";
-    rememberTheWayOut(path, wayOut.pop());
-    return path == "\n" ? path + "I couldn't find a way out." : "The way out is: " + path;
+    rememberTheWayOut(wayOut.pop());
+    return path.isEmpty() ? "\nI couldn't find a way out." : "\nThe way out is: " + path;
   }
   
-  private void rememberTheWayOut(String path, Position position) {
+  private void rememberTheWayOut(Position position) {
     System.out.print(".");
     if (wayOut.isEmpty() == false) {
       Position otherPosition = wayOut.pop();
       path += position.movementDirection(otherPosition);
-      rememberTheWayOut(path, otherPosition);
+      rememberTheWayOut(otherPosition);
     }
   }
   
@@ -108,6 +108,7 @@ public class MazeRunner {
     this.paths = new PathSet();
     this.wayOut = new Stack<>();
     this.origin = whereAreYou();
+    this.path = "";
   }
 
   // #endregion

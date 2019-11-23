@@ -1,4 +1,4 @@
-package mazerunner;
+package maze.mazerunner;
 
 import java.util.ArrayList;
 
@@ -26,20 +26,18 @@ class Position {
 
   String movementDirection(Position position) {
     int movement = position.l - l;
-    System.out.print("L: " + movement + " ");
-    if (movement < 0) {
-      return "3";
-    }
-    if (movement > 0) {
-      return "1";
-    }
-    movement = position.c - c;
-    System.out.print("C: " + movement + "\n");
     if (movement < 0) {
       return "0";
     }
     if (movement > 0) {
       return "2";
+    }
+    movement = position.c - c;
+    if (movement < 0) {
+      return "3";
+    }
+    if (movement > 0) {
+      return "1";
     }
     return null;
   }

@@ -1,3 +1,3 @@
 # MazeRunner
 
-Maratona de Programação do Segundo semestre de 2019
+Maratona de Programação de 2019

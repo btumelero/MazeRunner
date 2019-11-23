@@ -1,4 +1,4 @@
-package mazerunner;
+package maze.mazerunner;
 
 import java.util.HashSet;
 
