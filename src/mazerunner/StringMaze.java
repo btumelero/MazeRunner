@@ -1,4 +1,6 @@
-public class StringMaze {
+package mazerunner;
+
+class StringMaze {
 
   final String[][] maze;
 
@@ -7,7 +9,7 @@ public class StringMaze {
    * @param position The position to be checked
    * @return True if position exists and it's a valid path
    */
-  public boolean existsAndIsPath(int[] position) {
+  boolean existsAndIsPath(Position position) {
     try {
       return isPath(position);
     } catch (ArrayIndexOutOfBoundsException e) {
@@ -20,23 +22,23 @@ public class StringMaze {
    * @param position The position to be checked
    * @return True if position is a valid path
    */
-  public boolean isPath (int[] position) {
-    return maze[position[0]][position[1]].equals(" ");
+  boolean isPath (Position position) {
+    return maze[position.l][position.c].equals(" ");
   }
 
-  public String get(int l, int c) {
+  String get(int l, int c) {
     return maze[l][c];
   }
 
-  public int height() {
-    return maze[0].length;
-  }
-
-  public int width() {
+  int lines() {
     return maze.length;
   }
 
-  public StringMaze(String[][] maze) {
+  int columns() {
+    return maze[0].length;
+  }
+
+  StringMaze(String[][] maze) {
     this.maze = maze;
   }
 }

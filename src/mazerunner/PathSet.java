@@ -1,6 +1,8 @@
+package mazerunner;
+
 import java.util.HashSet;
 
-public class PathSet {
+class PathSet {
 
   private final HashSet<Position> paths;
 
@@ -9,7 +11,7 @@ public class PathSet {
    * @param path The path to be added
    * @return True if added the new path
    */
-  public boolean addIfAbsent(Position path) {
+  boolean addIfAbsent(Position path) {
     if (contains(path) == false) {
       paths.add(path);
       return true;
@@ -22,7 +24,7 @@ public class PathSet {
    * @param otherPath The path to check
    * @return True if contains the path
    */
-  public boolean contains(Position otherPath) {
+  boolean contains(Position otherPath) {
     for (Position path : paths) {
       if (path.equals(otherPath)) {
         return true;
@@ -31,7 +33,16 @@ public class PathSet {
     return false;
   }
 
-  public PathSet () {
+  boolean containsWithL(int l) {
+    for (Position path : paths) {
+      if (path.l == l) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  PathSet () {
     this.paths = new HashSet<>();
   }
 }

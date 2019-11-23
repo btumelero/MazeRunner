@@ -1,6 +1,8 @@
+import mazerunner.MazeRunner;
+
 public class Maze {
 
-  String[][] maze = {
+  static String[][] maze = {
     {"#", "@", "#", "#", "#", "#", "#", "#", "#", "#"},
     {"#", " ", " ", "#", " ", " ", " ", " ", " ", "#"},
     {"#", "#", " ", "#", " ", "#", "#", "#", " ", "#"},
@@ -12,10 +14,15 @@ public class Maze {
 
   public static String Solve(String[][] maze){
     MazeRunner mazeRunner = new MazeRunner(maze);
-    mazeRunner.runEverywhere();
-    return null;
+    mazeRunner.explore();
+    mazeRunner.think();
+    String explanation = mazeRunner.explain();
+    System.out.println(explanation);
+    return explanation;
   }
 
-
+  public static void main(String[] args) {
+    Maze.Solve(Maze.maze);
+  }
 
 }
