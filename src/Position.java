@@ -1,21 +1,16 @@
 import java.util.ArrayList;
 
 public class Position {
+
   Position previous;
   ArrayList<Position> next;
   int l, c;
 
-  /**
-   * @param l the x to set
-   */
   public Position setL(int l) {
     this.l = l;
     return this;
   }
 
-  /**
-   * @param y the y to set
-   */
   public Position setC(int c) {
     this.c = c;
     return this;
