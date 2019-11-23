@@ -2,7 +2,7 @@ import java.util.HashSet;
 
 public class PathSet {
 
-  private HashSet<Position> paths;
+  private final HashSet<Position> paths;
 
   /**
    * Adds the path if it's a new one
@@ -29,5 +29,9 @@ public class PathSet {
       }
     }
     return false;
+  }
+
+  public PathSet () {
+    this.paths = new HashSet<>();
   }
 }

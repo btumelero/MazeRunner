@@ -2,8 +2,8 @@ import java.util.ArrayList;
 
 public class Position {
 
-  Position previous;
-  ArrayList<Position> next;
+  Position origin;
+  final ArrayList<Position> possiblePaths;
   int l, c;
 
   public Position setL(int l) {
@@ -42,7 +42,7 @@ public class Position {
   }
 
   public Position() {
-    this.next = new ArrayList<>();
+    this.possiblePaths = new ArrayList<>();
   }
 
   public Position(int[] lc) {

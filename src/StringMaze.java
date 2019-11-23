@@ -1,18 +1,29 @@
 public class StringMaze {
 
-  String[][] maze;
+  final String[][] maze;
 
-  public boolean exists(int[] position) {
+  /**
+   * Lazily check if position exists and it's a valid path (XGH)
+   * @param position The position to be checked
+   * @return True if position exists and it's a valid path
+   */
+  public boolean existsAndIsPath(int[] position) {
     try {
-      return maze[position[0]][position[1]] != null;
-    } catch (Exception e) {
+      return isPath(position);
+    } catch (ArrayIndexOutOfBoundsException e) {
       return false;
     }
   }
 
   /**
-   * @return the maze
+   * Check if position is a valid path
+   * @param position The position to be checked
+   * @return True if position is a valid path
    */
+  public boolean isPath (int[] position) {
+    return maze[position[0]][position[1]].equals(" ");
+  }
+
   public String get(int l, int c) {
     return maze[l][c];
   }
