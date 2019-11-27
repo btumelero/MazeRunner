@@ -18,19 +18,19 @@ public class MazeRunner {
     run(origin);
   }
 
-  private void run(Position position) {
+  private void run(Position currentPosition) {
     System.out.print(".");
-    fromTo(position, position.up());
-    fromTo(position, position.right());
-    fromTo(position, position.down());
-    fromTo(position, position.left());
+    fromTo(currentPosition, currentPosition.down());
+    fromTo(currentPosition, currentPosition.left());
+    fromTo(currentPosition, currentPosition.right());
+    fromTo(currentPosition, currentPosition.up());
   }
 
-  private void fromTo(Position position, Position newPath) {
+  private void fromTo(Position currentPosition, Position newPath) {
     if (maze.existsAndIsPath(newPath)) {
       if (paths.addIfAbsent(newPath)) {
-        newPath.origin = position;
-        position.possiblePaths.add(newPath);
+        newPath.previousPosition = currentPosition;
+        currentPosition.possiblePaths.add(newPath);
         run(newPath);
       }
     }
@@ -59,8 +59,8 @@ public class MazeRunner {
   private void wayOutFound(Position position) {
     if (position != null) {
       wayOut.push(position);
-      if (position.origin != null) {
-        wayOutFound(position.origin);
+      if (position.previousPosition != null) {
+        wayOutFound(position.previousPosition); 
       }
     }
   }

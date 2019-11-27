@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 class Position {
 
-  Position origin;
+  Position previousPosition;
   final ArrayList<Position> possiblePaths;
   int l, c;
 
@@ -26,18 +26,12 @@ class Position {
 
   String movementDirection(Position position) {
     int movement = position.l - l;
-    if (movement < 0) {
-      return "0";
-    }
-    if (movement > 0) {
-      return "2";
+    if (movement != 0) {
+      return movement < 0 ? "0" : "2";
     }
     movement = position.c - c;
-    if (movement < 0) {
-      return "3";
-    }
-    if (movement > 0) {
-      return "1";
+    if (movement != 0) {
+      return movement < 0 ? "3" : "1";
     }
     return null;
   }
